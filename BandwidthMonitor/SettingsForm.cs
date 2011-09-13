@@ -19,15 +19,12 @@ namespace BandwidthMonitor
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            //NetInterfaces interfaces = new NetInterfaces();
-            Dictionary<string, string> adapters = new Dictionary<string, string>();
             foreach(NetInterface i in NetInterfaces.interfaces)
             {
-                //adapters.Add(i.ToString(), i.ToString());
                 networkAdaptersList.Items.Add(i);
             }
             networkAdaptersList.SelectedIndex = 0;
-            //listBox1.Items = adapters;
+            Console.WriteLine("bobby" + networkAdaptersList.Items[1]);
         }
     }
 }

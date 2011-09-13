@@ -85,9 +85,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox networkAdaptersList;
         private System.Windows.Forms.BindingSource netInterfacesBindingSource;
         private System.Windows.Forms.BindingSource netInterfaceBindingSource;
-        private System.Windows.Forms.ListBox networkAdaptersList;
 
     }
 }
