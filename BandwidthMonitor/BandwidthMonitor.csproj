@@ -64,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bytes.cs" />
-    <Compile Include="DataLogger.cs" />
     <Compile Include="DataTransferLump.cs" />
     <Compile Include="DataTransferPeriod.cs" />
     <Compile Include="DataTransferInstant.cs" />
