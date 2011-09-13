@@ -23,23 +23,24 @@ namespace BandwidthMonitor.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\Database1.sdf")]
-        public string Database1ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string Bob {
             get {
-                return ((string)(this["Database1ConnectionString"]));
+                return ((string)(this["Bob"]));
+            }
+            set {
+                this["Bob"] = value;
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\Database.sdf")]
-        public string DatabaseConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Henry")]
+        public string Jim {
             get {
-                return ((string)(this["DatabaseConnectionString"]));
+                return ((string)(this["Jim"]));
             }
         }
     }
