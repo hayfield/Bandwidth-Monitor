@@ -5,6 +5,9 @@ using System.Text;
 
 namespace BandwidthMonitor
 {
+    /// <summary>
+    /// The amount of data transfer between two points in time
+    /// </summary>
     class DataTransferPeriod
     {
         private long startTicks;
