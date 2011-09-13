@@ -30,9 +30,7 @@ namespace BandwidthMonitor
             networkAdaptersList.DataSource = NetInterfaces.interfaces;
             networkAdaptersList.DisplayMember = "name";
             networkAdaptersList.ValueMember = "ID";
-            Console.WriteLine("will select");
             networkAdaptersList.SelectedIndex = NetInterfaces.InterfaceIndexWithID(Properties.Settings.Default.TrackedAdapter);
-            Console.WriteLine("id: " + Properties.Settings.Default.TrackedAdapter + " index: " + NetInterfaces.InterfaceIndexWithID(Properties.Settings.Default.TrackedAdapter));
         }
 
         private void networkAdaptersList_SelectedValueChanged(object sender, EventArgs e)

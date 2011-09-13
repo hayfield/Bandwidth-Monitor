@@ -28,6 +28,20 @@ namespace BandwidthMonitor
             }
         }
 
+        /// <summary>
+        /// Returns the interface being tracked
+        /// </summary>
+        /// <returns></returns>
+        public static NetInterface TrackedInterface()
+        {
+            return interfaces[InterfaceIndexWithID(Properties.Settings.Default.TrackedAdapter)];
+        }
+
+        /// <summary>
+        /// Finds the ID of the interface being tracked within the list
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public static int InterfaceIndexWithID(String ID)
         {
             int i = 0;
@@ -42,6 +56,9 @@ namespace BandwidthMonitor
             return 0;
         }
 
+        /// <summary>
+        /// Update the interfaces
+        /// </summary>
         public static void update()
         {
             foreach (NetInterface adapter in interfaces)
