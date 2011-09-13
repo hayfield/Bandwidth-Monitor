@@ -84,7 +84,6 @@ namespace BandwidthMonitor
             minTrack = new DataTransferTracker(1, logHandler);
 
             readFile();
-            Console.WriteLine(Properties.Settings.Default.Jim);
         }
 
         private long bytesIn()

@@ -22,26 +22,5 @@ namespace BandwidthMonitor.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
-        public string Bob {
-            get {
-                return ((string)(this["Bob"]));
-            }
-            set {
-                this["Bob"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Henry")]
-        public string Jim {
-            get {
-                return ((string)(this["Jim"]));
-            }
-        }
     }
 }
