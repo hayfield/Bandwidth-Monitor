@@ -61,6 +61,9 @@ namespace BandwidthMonitor
 
         DataTransferTracker minTrack;
 
+        public String name { get { return ToString(); } }
+        public String ID { get { return adapter.Id; } }
+
         #endregion variables
 
         public NetInterface(NetworkInterface adapterIn)

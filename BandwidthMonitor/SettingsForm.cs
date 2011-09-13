@@ -19,12 +19,21 @@ namespace BandwidthMonitor
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            foreach(NetInterface i in NetInterfaces.interfaces)
-            {
-                networkAdaptersList.Items.Add(i);
-            }
+            populateAdaptersList();
+        }
+
+        private void populateAdaptersList()
+        {
+            networkAdaptersList.DataSource = NetInterfaces.interfaces;
+            networkAdaptersList.DisplayMember = "name";
+            networkAdaptersList.ValueMember = "ID";
             networkAdaptersList.SelectedIndex = 0;
-            Console.WriteLine("bobby" + networkAdaptersList.Items[1]);
+        }
+
+        private void networkAdaptersList_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("selected: " + networkAdaptersList.SelectedIndex + " item: " + networkAdaptersList.SelectedItem + " val: " + networkAdaptersList.SelectedValue);
+            //Properties.Settings.Default.TrackedAdapter = networkAdaptersList.SelectedValue;
         }
     }
 }

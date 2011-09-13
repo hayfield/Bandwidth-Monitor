@@ -49,6 +49,7 @@
             this.networkAdaptersList.Size = new System.Drawing.Size(402, 355);
             this.networkAdaptersList.Sorted = true;
             this.networkAdaptersList.TabIndex = 2;
+            this.networkAdaptersList.SelectedValueChanged += new System.EventHandler(this.networkAdaptersList_SelectedValueChanged);
             // 
             // SettingsForm
             // 
