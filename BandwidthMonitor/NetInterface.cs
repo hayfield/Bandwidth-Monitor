@@ -77,7 +77,7 @@ namespace BandwidthMonitor
             properties = adapter.GetIPProperties();
             Console.WriteLine(adapter.Name + " " + adapter.Description + " " + adapter.OperationalStatus);
 
-            minTrack = new DataTransferTracker(2, logHandler);
+            minTrack = new DataTransferTracker(1, logHandler);
 
             readFile();
         }

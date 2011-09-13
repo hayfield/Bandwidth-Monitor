@@ -122,5 +122,13 @@ namespace BandwidthMonitor
         {
             return DateTime.UtcNow.Ticks - minutesIntoPast * TimeSpan.TicksPerMinute;
         }
+
+        /// <summary>
+        /// Prints an output to console
+        /// </summary>
+        public void print()
+        {
+            Console.WriteLine("In: " + bytesIn + " Out: " + bytesOut);
+        }
     }
 }
