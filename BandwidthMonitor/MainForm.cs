@@ -28,5 +28,11 @@ namespace BandwidthMonitor
         {
             interfaces.update();
         }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.ShowDialog(this);
+        }
     }
 }

@@ -164,5 +164,13 @@ namespace BandwidthMonitor
             //(new FileInfo(logPath)).Directory.Create();
             // File.WriteAllText(logPath, "green pie");
         }
+
+        public override String ToString()
+        {
+            if (adapter.OperationalStatus == OperationalStatus.Up)
+                return "[UP] " + adapter.Description;
+            else
+                return adapter.Description;
+        }
     }
 }

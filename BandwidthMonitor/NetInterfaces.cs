@@ -11,12 +11,7 @@ namespace BandwidthMonitor
         /// <summary>
         /// The active Network Interfaces
         /// </summary>
-        List<NetInterface> interfaces = new List<NetInterface>();
-
-        /// <summary>
-        /// The network interfaces that have an operational status that isn't 'Up'
-        /// </summary>
-        List<NetInterface> notUpInterfaces = new List<NetInterface>();
+        public List<NetInterface> interfaces = new List<NetInterface>();
 
         public NetInterfaces()
         {
@@ -24,19 +19,17 @@ namespace BandwidthMonitor
             foreach (NetworkInterface adapter in adapters)
             {
                 NetInterface netInterface = new NetInterface(adapter);
-                if (adapter.OperationalStatus == OperationalStatus.Up)
-                    interfaces.Add(netInterface);
-                else
-                    notUpInterfaces.Add(netInterface);
+                interfaces.Add(netInterface);
             }
         }
 
         public void update()
         {
-            foreach (NetInterface adapter in interfaces.Concat(notUpInterfaces))
+            foreach (NetInterface adapter in interfaces)
             {
                 adapter.update();
             }
         }
+
     }
 }
