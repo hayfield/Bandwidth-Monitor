@@ -39,7 +39,7 @@ namespace BandwidthMonitor
             {
                 //Console.WriteLine("selected: " + networkAdaptersList.SelectedIndex + " item: " + networkAdaptersList.SelectedItem + " val: " + networkAdaptersList.SelectedValue);
                 Properties.Settings.Default.TrackedAdapter = networkAdaptersList.SelectedValue.ToString();
-                Console.WriteLine("set: " + networkAdaptersList.SelectedValue.ToString() + " val: " + Properties.Settings.Default.TrackedAdapter);
+                //Console.WriteLine("set: " + networkAdaptersList.SelectedValue.ToString() + " val: " + Properties.Settings.Default.TrackedAdapter);
             }
         }
     }
