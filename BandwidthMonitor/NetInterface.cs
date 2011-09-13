@@ -57,6 +57,8 @@ namespace BandwidthMonitor
         /// </summary>
         String logPath;
 
+        DataTransferTracker minTrack;
+
         public NetInterface(NetworkInterface adapterIn)
         {
             // set up the adapter
@@ -74,6 +76,8 @@ namespace BandwidthMonitor
             bytesOutSession = stats.BytesSent;
             properties = adapter.GetIPProperties();
             Console.WriteLine(adapter.Name + " " + adapter.Description + " " + adapter.OperationalStatus);
+
+            minTrack = new DataTransferTracker(2, logHandler);
 
             readFile();
         }
@@ -114,6 +118,7 @@ namespace BandwidthMonitor
             period = new DataTransferPeriod(dataTransferStart, updateDataTransferStart(), bytesIn(), bytesOut());
             infos.Add(period);
             updateDataInstant();
+            minTrack.updateSecond(period, logHandler);
             if (infos.Count == 60)
             {
                 long startTime = infos[0].getStartTicks();

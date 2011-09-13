@@ -27,6 +27,12 @@ namespace BandwidthMonitor
         /// </summary>
         private DataTransferInstant startInstant;
         /// <summary>
+        /// A minute after the instant that the tracker starts
+        /// </summary>
+        private DataTransferInstant minuteAfterStartInstant;
+        private DataTransferLump bytesStartPerSecond = new DataTransferLump(0, 0);
+        private DataTransferLump bytesStartLeftover = new DataTransferLump(0, 0);
+        /// <summary>
         /// The number of the second that is being tracked at present
         /// </summary>
         private byte second;
@@ -44,7 +50,7 @@ namespace BandwidthMonitor
             minutesIntoPast = minutes;
 
             // find the data transfer over the period
-            startInstant = logHandler.getDataInstant(ticksAtStartPoint());
+            setStartInstantValues(logHandler);
             DataTransferInstant currentInstant = logHandler.getDataInstant(DateTime.UtcNow.Ticks);
             bytesIn = currentInstant.bytesIn - startInstant.bytesIn;
             bytesOut = currentInstant.bytesOut - startInstant.bytesOut;
@@ -53,19 +59,42 @@ namespace BandwidthMonitor
             second = 0;
             for (byte s = 0; s < 60; s++)
                 seconds[s] = new DataTransferLump(0, 0);
-
-
         }
 
+        /// <summary>
+        /// Loads the values regarding the start instant for the tracker
+        /// </summary>
+        /// <param name="logHandler"></param>
+        private void setStartInstantValues(LogHandler logHandler)
+        {
+            startInstant = logHandler.getDataInstant(ticksAtStartPoint());
+            // try looking slightly after a minute ahead to account for any delays in saving
+            minuteAfterStartInstant = logHandler.getDataInstant(ticksAtStartPoint() + (long)(TimeSpan.TicksPerMinute * 1.02));
+
+            // work out how many bytes change should be made each second so there's no sudden jump when the minute changes
+            long inDiff = minuteAfterStartInstant.bytesIn - startInstant.bytesIn;
+            long outDiff = minuteAfterStartInstant.bytesOut - startInstant.bytesOut;
+            bytesStartPerSecond.bytesIn = inDiff / 60;
+            bytesStartPerSecond.bytesOut = outDiff / 60;
+
+            bytesStartLeftover.bytesIn = inDiff - bytesStartPerSecond.bytesIn * 60;
+            bytesStartLeftover.bytesOut = outDiff - bytesStartPerSecond.bytesOut * 60;
+        }
+
+        /// <summary>
+        /// Update the tracker every second
+        /// </summary>
+        /// <param name="period"></param>
+        /// <param name="logHandler"></param>
         public void updateSecond(DataTransferPeriod period, LogHandler logHandler)
         {
             if (second == 60)
             {
                 second = 0;
-                updateMinute();
+                updateMinute(logHandler);
             }
-            bytesIn -= seconds[second].bytesIn;
-            bytesOut -= seconds[second].bytesOut;
+            bytesIn -= bytesStartPerSecond.bytesIn;
+            bytesOut -= bytesStartPerSecond.bytesOut;
             seconds[second].set(period.getBytesIn(), period.getBytesOut());
             bytesIn += seconds[second].bytesIn;
             bytesOut += seconds[second].bytesOut;
@@ -73,19 +102,25 @@ namespace BandwidthMonitor
             second++;
         }
 
-        private void updateMinute()
+        /// <summary>
+        /// Make some additional changes to the tracker every minute
+        /// </summary>
+        private void updateMinute(LogHandler logHandler)
         {
-
+            // remove any leftover bytes
+            bytesIn -= bytesStartLeftover.bytesIn;
+            bytesOut -= bytesStartLeftover.bytesOut;
+            // update the start point
+            setStartInstantValues(logHandler);
         }
 
         /// <summary>
         /// Finds the number of ticks at the point that the tracker started.
-        /// Actually looks a minute after it started so it can be updated on a second-by-second basis.
         /// </summary>
         /// <returns></returns>
         private long ticksAtStartPoint()
         {
-            return DateTime.UtcNow.Ticks - (minutesIntoPast - 1) * TimeSpan.TicksPerMinute;
+            return DateTime.UtcNow.Ticks - minutesIntoPast * TimeSpan.TicksPerMinute;
         }
     }
 }
