@@ -47,7 +47,6 @@
             this.networkAdaptersList.Location = new System.Drawing.Point(12, 25);
             this.networkAdaptersList.Name = "networkAdaptersList";
             this.networkAdaptersList.Size = new System.Drawing.Size(402, 355);
-            this.networkAdaptersList.Sorted = true;
             this.networkAdaptersList.TabIndex = 2;
             this.networkAdaptersList.SelectedValueChanged += new System.EventHandler(this.networkAdaptersList_SelectedValueChanged);
             // 

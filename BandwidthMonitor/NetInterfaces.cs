@@ -21,6 +21,7 @@ namespace BandwidthMonitor
                 NetInterface netInterface = new NetInterface(adapter);
                 interfaces.Add(netInterface);
             }
+            interfaces = interfaces.OrderBy(adapter => adapter.name).ToList();
         }
 
         public static void update()
