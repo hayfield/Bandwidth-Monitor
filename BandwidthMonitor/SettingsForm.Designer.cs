@@ -28,13 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.networkAdaptersList = new System.Windows.Forms.ListBox();
-            this.netInterfaceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.netInterfacesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.netInterfaceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.netInterfacesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -55,14 +50,6 @@
             this.networkAdaptersList.Sorted = true;
             this.networkAdaptersList.TabIndex = 2;
             // 
-            // netInterfaceBindingSource
-            // 
-            this.netInterfaceBindingSource.DataSource = typeof(BandwidthMonitor.NetInterface);
-            // 
-            // netInterfacesBindingSource
-            // 
-            this.netInterfacesBindingSource.DataSource = typeof(BandwidthMonitor.NetInterfaces);
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -75,8 +62,6 @@
             this.Name = "SettingsForm";
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.SettingsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.netInterfaceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.netInterfacesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,8 +71,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox networkAdaptersList;
-        private System.Windows.Forms.BindingSource netInterfacesBindingSource;
-        private System.Windows.Forms.BindingSource netInterfaceBindingSource;
 
     }
 }
