@@ -34,5 +34,17 @@ namespace BandwidthMonitor.Properties {
                 this["TrackedAdapter"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TrackedAdapterSet {
+            get {
+                return ((bool)(this["TrackedAdapterSet"]));
+            }
+            set {
+                this["TrackedAdapterSet"] = value;
+            }
+        }
     }
 }

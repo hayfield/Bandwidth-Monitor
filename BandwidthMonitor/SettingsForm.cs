@@ -12,6 +12,8 @@ namespace BandwidthMonitor
 {
     public partial class SettingsForm : Form
     {
+        private bool initialised = false;
+
         public SettingsForm()
         {
             InitializeComponent();
@@ -20,6 +22,7 @@ namespace BandwidthMonitor
         private void SettingsForm_Load(object sender, EventArgs e)
         {
             populateAdaptersList();
+            initialised = true;
         }
 
         private void populateAdaptersList()
@@ -27,13 +30,19 @@ namespace BandwidthMonitor
             networkAdaptersList.DataSource = NetInterfaces.interfaces;
             networkAdaptersList.DisplayMember = "name";
             networkAdaptersList.ValueMember = "ID";
-            networkAdaptersList.SelectedIndex = 0;
+            Console.WriteLine("will select");
+            networkAdaptersList.SelectedIndex = NetInterfaces.InterfaceIndexWithID(Properties.Settings.Default.TrackedAdapter);
+            Console.WriteLine("id: " + Properties.Settings.Default.TrackedAdapter + " index: " + NetInterfaces.InterfaceIndexWithID(Properties.Settings.Default.TrackedAdapter));
         }
 
         private void networkAdaptersList_SelectedValueChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine("selected: " + networkAdaptersList.SelectedIndex + " item: " + networkAdaptersList.SelectedItem + " val: " + networkAdaptersList.SelectedValue);
-            Properties.Settings.Default.TrackedAdapter = networkAdaptersList.SelectedValue.ToString();
+            if (initialised)
+            {
+                //Console.WriteLine("selected: " + networkAdaptersList.SelectedIndex + " item: " + networkAdaptersList.SelectedItem + " val: " + networkAdaptersList.SelectedValue);
+                Properties.Settings.Default.TrackedAdapter = networkAdaptersList.SelectedValue.ToString();
+                Console.WriteLine("set: " + networkAdaptersList.SelectedValue.ToString() + " val: " + Properties.Settings.Default.TrackedAdapter);
+            }
         }
     }
 }
