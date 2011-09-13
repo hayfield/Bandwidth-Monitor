@@ -10,6 +10,8 @@ namespace BandwidthMonitor
     /// </summary>
     class DataTransferTracker
     {
+        #region variables
+
         /// <summary>
         /// The number of minutes into the past being tracked
         /// </summary>
@@ -30,7 +32,13 @@ namespace BandwidthMonitor
         /// A minute after the instant that the tracker starts
         /// </summary>
         private DataTransferInstant minuteAfterStartInstant;
+        /// <summary>
+        /// The number of bytes to remove each second
+        /// </summary>
         private DataTransferLump bytesStartPerSecond = new DataTransferLump(0, 0);
+        /// <summary>
+        /// The number of additional bytes to remove each minute
+        /// </summary>
         private DataTransferLump bytesStartLeftover = new DataTransferLump(0, 0);
         /// <summary>
         /// The number of the second that is being tracked at present
@@ -40,6 +48,8 @@ namespace BandwidthMonitor
         /// The last 60 seconds worth of data transfer
         /// </summary>
         private DataTransferLump[] seconds = new DataTransferLump[60];
+
+        #endregion variables
 
         public DataTransferTracker(long minutes, LogHandler logHandler)
         {

@@ -10,6 +10,8 @@ namespace BandwidthMonitor
 {
     class NetInterface
     {
+        #region variables
+
         /// <summary>
         /// The network adapter to watch
         /// </summary>
@@ -58,6 +60,8 @@ namespace BandwidthMonitor
         String logPath;
 
         DataTransferTracker minTrack;
+
+        #endregion variables
 
         public NetInterface(NetworkInterface adapterIn)
         {
