@@ -59,13 +59,16 @@ namespace BandwidthMonitor
 
         public NetInterface(NetworkInterface adapterIn)
         {
+            // set up the adapter
             adapter = adapterIn;
             stats = adapter.GetIPv4Statistics();
 
+            // set up the logging
             logPath = Path.Combine("logs", Path.Combine(adapter.Description, adapter.GetPhysicalAddress().ToString(), adapter.Id));
             logHandler = new LogHandler(logPath);
             loadDataInstant(DateTime.UtcNow.Ticks);
             
+            // set up the data tracking
             dataTransferStart = currentTicks();
             bytesInSession = stats.BytesReceived;
             bytesOutSession = stats.BytesSent;
