@@ -64,8 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLogger.cs" />
+    <Compile Include="DataTransferLump.cs" />
     <Compile Include="DataTransferPeriod.cs" />
     <Compile Include="DataTransferInstant.cs" />
+    <Compile Include="DataTransferTracker.cs" />
     <Compile Include="LogHandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
