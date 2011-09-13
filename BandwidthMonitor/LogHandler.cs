@@ -80,10 +80,6 @@ namespace BandwidthMonitor
                                          BytesIn = data[1],
                                          BytesOut = data[2]
                                      }).First();
-                    //Console.WriteLine(lastEntry);
-                    //Console.WriteLine();
-                    //long end = DateTime.UtcNow.Ticks;
-                    //Console.WriteLine((double)(end - time) / TimeSpan.TicksPerSecond);
 
                     return new DataTransferInstant(Convert.ToInt64(lastEntry.BytesIn), Convert.ToInt64(lastEntry.BytesOut));
                 }
