@@ -32,8 +32,8 @@ namespace BandwidthMonitor
 
         private void networkAdaptersList_SelectedValueChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("selected: " + networkAdaptersList.SelectedIndex + " item: " + networkAdaptersList.SelectedItem + " val: " + networkAdaptersList.SelectedValue);
-            //Properties.Settings.Default.TrackedAdapter = networkAdaptersList.SelectedValue;
+            //Console.WriteLine("selected: " + networkAdaptersList.SelectedIndex + " item: " + networkAdaptersList.SelectedItem + " val: " + networkAdaptersList.SelectedValue);
+            Properties.Settings.Default.TrackedAdapter = networkAdaptersList.SelectedValue.ToString();
         }
     }
 }

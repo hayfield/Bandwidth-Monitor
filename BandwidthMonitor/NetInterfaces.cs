@@ -28,6 +28,10 @@ namespace BandwidthMonitor
             foreach (NetInterface adapter in interfaces)
             {
                 adapter.update();
+                if (adapter.ID == Properties.Settings.Default.TrackedAdapter)
+                {
+                    adapter.OutputValues();
+                }
             }
         }
 

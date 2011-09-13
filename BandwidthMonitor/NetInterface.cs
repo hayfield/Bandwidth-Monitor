@@ -175,5 +175,11 @@ namespace BandwidthMonitor
             else
                 return adapter.Description;
         }
+
+        public void OutputValues()
+        {
+            Console.WriteLine(adapter.Description);
+            minTrack.print();
+        }
     }
 }
