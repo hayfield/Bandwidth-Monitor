@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.networkAdaptersDropdown = new System.Windows.Forms.ComboBox();
             this.networkAdaptersList = new System.Windows.Forms.ListBox();
             this.netInterfaceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.netInterfacesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -47,21 +46,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Network Adapter";
             // 
-            // networkAdaptersDropdown
-            // 
-            this.networkAdaptersDropdown.FormattingEnabled = true;
-            this.networkAdaptersDropdown.Location = new System.Drawing.Point(12, 25);
-            this.networkAdaptersDropdown.Name = "networkAdaptersDropdown";
-            this.networkAdaptersDropdown.Size = new System.Drawing.Size(405, 21);
-            this.networkAdaptersDropdown.Sorted = true;
-            this.networkAdaptersDropdown.TabIndex = 0;
-            // 
             // networkAdaptersList
             // 
             this.networkAdaptersList.FormattingEnabled = true;
-            this.networkAdaptersList.Location = new System.Drawing.Point(15, 69);
+            this.networkAdaptersList.Location = new System.Drawing.Point(12, 25);
             this.networkAdaptersList.Name = "networkAdaptersList";
-            this.networkAdaptersList.Size = new System.Drawing.Size(402, 303);
+            this.networkAdaptersList.Size = new System.Drawing.Size(402, 355);
             this.networkAdaptersList.Sorted = true;
             this.networkAdaptersList.TabIndex = 2;
             // 
@@ -80,7 +70,6 @@
             this.ClientSize = new System.Drawing.Size(429, 388);
             this.Controls.Add(this.networkAdaptersList);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.networkAdaptersDropdown);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
@@ -96,7 +85,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox networkAdaptersDropdown;
         private System.Windows.Forms.BindingSource netInterfacesBindingSource;
         private System.Windows.Forms.BindingSource netInterfaceBindingSource;
         private System.Windows.Forms.ListBox networkAdaptersList;

@@ -6,14 +6,14 @@ using System.Net.NetworkInformation;
 
 namespace BandwidthMonitor
 {
-    class NetInterfaces
+    static class NetInterfaces
     {
         /// <summary>
         /// The active Network Interfaces
         /// </summary>
-        public List<NetInterface> interfaces = new List<NetInterface>();
+        public static List<NetInterface> interfaces = new List<NetInterface>();
 
-        public NetInterfaces()
+        static NetInterfaces()
         {
             NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
             foreach (NetworkInterface adapter in adapters)
@@ -23,7 +23,7 @@ namespace BandwidthMonitor
             }
         }
 
-        public void update()
+        public static void update()
         {
             foreach (NetInterface adapter in interfaces)
             {

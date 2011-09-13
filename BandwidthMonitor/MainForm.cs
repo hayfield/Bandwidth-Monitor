@@ -17,7 +17,7 @@ namespace BandwidthMonitor
             InitializeComponent();
         }
 
-        NetInterfaces interfaces = new NetInterfaces();
+        //NetInterfaces interfaces = new NetInterfaces();
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -26,7 +26,7 @@ namespace BandwidthMonitor
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            interfaces.update();
+            NetInterfaces.update();
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
