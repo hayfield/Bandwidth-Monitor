@@ -61,7 +61,16 @@ namespace BandwidthMonitor
 
         DataTransferTracker minTrack;
 
-        public String name { get { return ToString(); } }
+        public String name
+        {
+            get
+            {
+                if (adapter.OperationalStatus == OperationalStatus.Up)
+                    return "[UP] " + adapter.Description;
+                else
+                    return adapter.Description;
+            }
+        }
         public String ID { get { return adapter.Id; } }
 
         #endregion variables
@@ -170,10 +179,7 @@ namespace BandwidthMonitor
 
         public override String ToString()
         {
-            if (adapter.OperationalStatus == OperationalStatus.Up)
-                return "[UP] " + adapter.Description;
-            else
-                return adapter.Description;
+            return name;
         }
 
         public void OutputValues()
