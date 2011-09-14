@@ -185,5 +185,10 @@ namespace BandwidthMonitor
             Console.WriteLine(adapter.Description);
             //MinuteTracker.print();
         }
+
+        public List<DataTransferPeriod> getDayData()
+        {
+            return logHandler.getDayData();
+        }
     }
 }

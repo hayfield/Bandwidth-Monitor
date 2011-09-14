@@ -24,35 +24,38 @@ namespace BandwidthMonitor
             DataRow row;
 
             column = new DataColumn();
-            column.DataType = System.Type.GetType("System.Int32");
+            column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "Date";
             column.ReadOnly = true;
             column.Unique = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
-            column.DataType = System.Type.GetType("System.Int32");
+            column.DataType = System.Type.GetType("System.Int64");
             column.ColumnName = "Data In";
             column.ReadOnly = true;
-            column.Unique = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
-            column.DataType = System.Type.GetType("System.Int32");
+            column.DataType = System.Type.GetType("System.Int64");
             column.ColumnName = "Data Out";
             column.ReadOnly = true;
-            column.Unique = true;
             table.Columns.Add(column);
 
-            row = table.NewRow();
-            row["Date"] = 328764;
-            row["Data In"] = 43785985;
-            row["Data Out"] = 093485;
-            table.Rows.Add(row);
+            NetInterface trackedInterface = NetInterfaces.TrackedInterface();
+            foreach (DataTransferPeriod period in trackedInterface.getDayData())
+            {
+                period.print();
+                row = table.NewRow();
+                row["Date"] = DateTime.FromBinary(period.getStartTicks()).ToShortDateString();
+                row["Data In"] = period.getBytesIn();
+                row["Data Out"] = period.getBytesOut();
+                table.Rows.Add(row);
+            }
             
-            BindingSource bs = new BindingSource();
-            bs.DataSource = table;
-            logTable.DataSource = bs;
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = table;
+            logTable.DataSource = bindingSource;
         }
     }
 }

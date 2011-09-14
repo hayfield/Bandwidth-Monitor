@@ -92,6 +92,10 @@ namespace BandwidthMonitor
             return new DataTransferInstant(0, 0);
         }
 
+        /// <summary>
+        /// Stores the specified instant data in a log file
+        /// </summary>
+        /// <param name="data"></param>
         public void Log(DataTransferInstant data)
         {
             String path = Path.Combine(logPath, getCurrentLogFileName());
@@ -103,6 +107,34 @@ namespace BandwidthMonitor
                 File.AppendAllText(path, data.ToCSV() + Environment.NewLine);
                 data.changed = false;
             }
+        }
+
+        /// <summary>
+        /// Returns the data for all days that there are log files for
+        /// </summary>
+        /// <returns></returns>
+        public List<DataTransferPeriod> getDayData()
+        {
+            List<DataTransferPeriod> list = new List<DataTransferPeriod>();
+
+            // loop through all the days with data
+            string[] fileNames = Directory.GetFiles(logPath);
+            foreach(string name in fileNames)
+            {
+                // find the start and end data for that day
+                string[] lines = File.ReadAllLines(name);
+                string[] start = lines[0].Split(',');
+                string[] end = lines[lines.Length - 1].Split(',');
+                long ticksStart = Convert.ToInt64(start[0]);
+                long ticksEnd = Convert.ToInt64(end[0]);
+
+                // work out the difference and store the value
+                long bytesIn = Convert.ToInt64(end[1]) - Convert.ToInt64(start[1]);
+                long bytesOut = Convert.ToInt64(end[2]) - Convert.ToInt64(start[2]);
+                list.Add(new DataTransferPeriod(ticksStart, ticksEnd, bytesIn, bytesOut, true));
+            }
+
+            return list;
         }
         
     }
