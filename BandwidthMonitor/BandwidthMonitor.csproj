@@ -71,7 +71,19 @@
     <Compile Include="DataTransferPeriod.cs" />
     <Compile Include="DataTransferInstant.cs" />
     <Compile Include="DataTransferTracker.cs" />
+    <Compile Include="LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogHandler.cs" />
+    <Compile Include="LogTables.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LogTables.Designer.cs">
+      <DependentUpon>LogTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,12 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Tracker.cs" />
+    <EmbeddedResource Include="LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogTables.resx">
+      <DependentUpon>LogTables.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

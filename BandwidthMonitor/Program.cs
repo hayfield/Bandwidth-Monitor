@@ -54,7 +54,7 @@ namespace BandwidthMonitor
             icon.DoubleClick += new EventHandler(icon_Click);
             icon.ContextMenu = iconMenu;
 
-            Application.Run();
+            Application.Run(new LogForm());
         }
 
         private static void OnTimedEvent(object source, ElapsedEventArgs e)
