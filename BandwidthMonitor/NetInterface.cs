@@ -80,7 +80,7 @@ namespace BandwidthMonitor
         /// <summary>
         /// Contains various trackers for the adapter
         /// </summary>
-        Dictionary<String, DataTransferTracker> Tracker = new Dictionary<string,DataTransferTracker>();
+        public Tracker Tracker;
 
         DataTransferTracker MinuteTracker;
         DataTransferTracker HourTracker;
@@ -105,8 +105,9 @@ namespace BandwidthMonitor
             properties = adapter.GetIPProperties();
             Console.WriteLine(adapter.Name + " " + adapter.Description + " " + adapter.OperationalStatus);
 
-            MinuteTracker = new DataTransferTracker(1, logHandler);
-            HourTracker = new DataTransferTracker(60, logHandler);
+            //MinuteTracker = new DataTransferTracker(1, logHandler);
+            //HourTracker = new DataTransferTracker(60, logHandler);
+            Tracker = new Tracker(logHandler);
 
             readFile();
         }
@@ -147,7 +148,8 @@ namespace BandwidthMonitor
             period = new DataTransferPeriod(dataTransferStart, updateDataTransferStart(), bytesIn(), bytesOut());
             infos.Add(period);
             updateDataInstant();
-            MinuteTracker.updateSecond(period, logHandler);
+            Tracker.Update(period, logHandler);
+            //MinuteTracker.updateSecond(period, logHandler);
             if (infos.Count == 60)
             {
                 long startTime = infos[0].getStartTicks();
@@ -198,7 +200,7 @@ namespace BandwidthMonitor
         public void OutputValues()
         {
             Console.WriteLine(adapter.Description);
-            MinuteTracker.print();
+            //MinuteTracker.print();
         }
     }
 }

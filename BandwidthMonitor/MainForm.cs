@@ -33,14 +33,21 @@ namespace BandwidthMonitor
         private void updateUI()
         {
             NetInterface trackedInterface = NetInterfaces.TrackedInterface();
-            kbInLabel.Text = Bytes.ToKilobytes(trackedInterface.period.getBytesIn()).ToString("#.##") + " KB/sec in";
-            kbOutLabel.Text = Bytes.ToKilobytes(trackedInterface.period.getBytesOut()).ToString("#.##") + " KB/sec out";
+            kbInLabel.Text = Bytes.ToKilobytes(trackedInterface.period.getBytesIn()).ToString("#0.00") + " KB/sec in";
+            kbOutLabel.Text = Bytes.ToKilobytes(trackedInterface.period.getBytesOut()).ToString("#0.00") + " KB/sec out";
+            mbInHour.Text = Bytes.ToMegabytes(trackedInterface.Tracker["Minute"].getBytesIn()).ToString("#0.00") + " MB in last minute";
+            mbOutHour.Text = Bytes.ToMegabytes(trackedInterface.Tracker["Minute"].getBytesOut()).ToString("#0.00") + " MB out last minute";
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.ShowDialog(this);
+        }
+
+        private void mbInHour_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

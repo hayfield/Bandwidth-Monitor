@@ -140,5 +140,23 @@ namespace BandwidthMonitor
         {
             Console.WriteLine("In: " + bytesIn + " Out: " + bytesOut);
         }
+
+        /// <summary>
+        /// Returns the number of bytes in over the tracked period
+        /// </summary>
+        /// <returns></returns>
+        public long getBytesIn()
+        {
+            return bytesIn;
+        }
+
+        /// <summary>
+        /// Returns the number of bytes out over the tracked period
+        /// </summary>
+        /// <returns></returns>
+        public long getBytesOut()
+        {
+            return bytesOut;
+        }
     }
 }
