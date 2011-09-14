@@ -68,7 +68,7 @@ namespace BandwidthMonitor
 
         private static void OnApplicationExit(object Sender, EventArgs e)
         {
-            Console.WriteLine("exiting");
+            //Console.WriteLine("exiting");
             foreach (NetInterface adapter in NetInterfaces.interfaces)
             {
                 adapter.ForceLog();

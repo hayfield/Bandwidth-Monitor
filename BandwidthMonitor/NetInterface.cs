@@ -159,7 +159,7 @@ namespace BandwidthMonitor
         public void ForceLog()
         {
             logHandler.Log(dataInstant);
-            Console.WriteLine("force " + adapter.Description);
+            //Console.WriteLine("force " + adapter.Description);
         }
 
         private void updateLog(DataTransferInstant data)
