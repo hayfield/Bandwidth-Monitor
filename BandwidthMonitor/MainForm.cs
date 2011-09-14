@@ -88,6 +88,11 @@ namespace BandwidthMonitor
             //notifyIcon.Text = "Bob likes\nEating";
         }
 
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.mainFormActive = false;
+        }
+
 
     }
 }

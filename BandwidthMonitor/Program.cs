@@ -26,6 +26,11 @@ namespace BandwidthMonitor
         private static ContextMenu iconMenu;
 
         /// <summary>
+        /// Indicates whether there is currently a main form open
+        /// </summary>
+        public static bool mainFormActive = false;
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -62,8 +67,12 @@ namespace BandwidthMonitor
 
         private static void icon_Click(object Sender, EventArgs e)
         {
-            MainForm form = new MainForm();
-            form.Show();
+            if (!mainFormActive)
+            {
+                MainForm form = new MainForm();
+                form.Show();
+                mainFormActive = true;
+            }
         }
 
         private static void OnApplicationExit(object Sender, EventArgs e)
