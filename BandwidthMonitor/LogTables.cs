@@ -27,17 +27,16 @@ namespace BandwidthMonitor
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "Date";
             column.ReadOnly = true;
-            column.Unique = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
-            column.DataType = System.Type.GetType("System.Int64");
+            column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "Data In";
             column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
-            column.DataType = System.Type.GetType("System.Int64");
+            column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "Data Out";
             column.ReadOnly = true;
             table.Columns.Add(column);
@@ -45,11 +44,10 @@ namespace BandwidthMonitor
             NetInterface trackedInterface = NetInterfaces.TrackedInterface();
             foreach (DataTransferPeriod period in trackedInterface.getDayData())
             {
-                period.print();
                 row = table.NewRow();
                 row["Date"] = DateTime.FromBinary(period.getStartTicks()).ToShortDateString();
-                row["Data In"] = period.getBytesIn();
-                row["Data Out"] = period.getBytesOut();
+                row["Data In"] = Bytes.ToMegabytes(period.getBytesIn()).ToString("#0.00") + " MB";
+                row["Data Out"] = Bytes.ToMegabytes(period.getBytesOut()).ToString("#0.00") + "MB";
                 table.Rows.Add(row);
             }
             
