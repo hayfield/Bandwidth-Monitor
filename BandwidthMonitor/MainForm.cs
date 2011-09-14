@@ -18,6 +18,7 @@ namespace BandwidthMonitor
         public MainForm()
         {
             InitializeComponent();
+            this.Visible = true;
         }
 
         //NetInterfaces interfaces = new NetInterfaces();
@@ -28,7 +29,7 @@ namespace BandwidthMonitor
             updateUI();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void secondTimer_Tick(object sender, EventArgs e)
         {
             updateUI();
         }
@@ -36,6 +37,7 @@ namespace BandwidthMonitor
         private void updateUI()
         {
             NetInterface trackedInterface = NetInterfaces.TrackedInterface();
+
             adapterName.Text = trackedInterface.name.Replace("[UP] ", "");
             kbInSecond.Text = Bytes.ToKilobytes(trackedInterface.period.getBytesIn()).ToString("#0.00") + " KB/sec in";
             kbOutSecond.Text = Bytes.ToKilobytes(trackedInterface.period.getBytesOut()).ToString("#0.00") + " KB/sec out";
@@ -52,7 +54,7 @@ namespace BandwidthMonitor
             gbInYear.Text = Bytes.ToGigabytes(trackedInterface.Tracker["Year"].getBytesIn()).ToString("#0.00") + " GB in last year";
             gbOutYear.Text = Bytes.ToGigabytes(trackedInterface.Tracker["Year"].getBytesOut()).ToString("#0.00") + " GB out last year";
 
-            notifyIcon.Text = kbInSecond.Text + "\n" + kbOutSecond.Text;
+            
         }
 
         private void populateAdaptersList()

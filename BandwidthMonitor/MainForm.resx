@@ -120,32 +120,4 @@
   <metadata name="secondTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="notifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>138, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAAAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
-        AAAuAP//LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//y4A
-        //8uAP//LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//y4A
-        //8uAP//LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//1n/AP9Z/wD/Wf8A/1n/AP9Z/wD//wAQ/1n/
-        AP9Z/wD/LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//1n/AP9Z/wD/LgD//y4A////ABD//wAQ//8A
-        EP8uAP//Wf8A/1n/AP8uAP//LgD//y4A//8uAP//LgD//1n/AP9Z/wD/LgD///8AEP//ABD//wAQ//8A
-        EP//ABD/LgD//y4A//9Z/wD/LgD//y4A//8uAP//LgD//1n/AP9Z/wD/LgD//y4A//8uAP//LgD///8A
-        EP//ABD//wAQ/y4A//8uAP//LgD//1n/AP8uAP//LgD//1n/AP9Z/wD/LgD//y4A//8uAP//LgD//y4A
-        ////ABD//wAQ//8AEP8uAP//LgD//y4A//9Z/wD/LgD//y4A//9Z/wD/LgD//y4A//8uAP//LgD//y4A
-        //8uAP//LgD///8AEP//ABD/LgD//y4A//8uAP//Wf8A/y4A//9Z/wD/Wf8A/y4A//8uAP//LgD//y4A
-        //9Z/wD/Wf8A/y4A//8uAP//LgD//y4A//8uAP//LgD//1n/AP8uAP//Wf8A/y4A//8uAP//LgD//y4A
-        //8uAP//Wf8A/1n/AP8uAP//LgD//y4A//8uAP//LgD//1n/AP9Z/wD/LgD//1n/AP8uAP//LgD//y4A
-        //8uAP//Wf8A/1n/AP9Z/wD/LgD//y4A//8uAP//LgD//y4A//9Z/wD/LgD//y4A//8uAP//Wf8A/y4A
-        //8uAP//LgD//1n/AP8uAP//LgD//1n/AP8uAP//LgD//y4A//8uAP//Wf8A/y4A//8uAP//LgD//1n/
-        AP8uAP//LgD//1n/AP9Z/wD/LgD//y4A//9Z/wD/LgD//y4A//8uAP//Wf8A/1n/AP8uAP//LgD//y4A
-        //9Z/wD/Wf8A/1n/AP9Z/wD/Wf8A/y4A//8uAP//Wf8A/y4A//8uAP//LgD//1n/AP8uAP//LgD//y4A
-        //8uAP//LgD//y4A//8uAP//Wf8A/y4A//8uAP//LgD//1n/AP9Z/wD/LgD//1n/AP9Z/wD/LgD//y4A
-        //8uAP//LgD//y4A//8uAP//LgD//y4A//8uAP//LgD//y4A//8uAP//Wf8A/1n/AP9Z/wD/LgD//y4A
-        //8uAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA
-        //8AAP//AAD//w==
-</value>
-  </data>
 </root>

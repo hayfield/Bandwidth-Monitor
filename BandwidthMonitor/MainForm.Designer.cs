@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.secondTimer = new System.Windows.Forms.Timer(this.components);
             this.settingsButton = new System.Windows.Forms.Button();
             this.kbInSecond = new System.Windows.Forms.Label();
@@ -49,7 +48,6 @@
             this.adapterName = new System.Windows.Forms.Label();
             this.networkAdaptersList = new System.Windows.Forms.ComboBox();
             this.settingsGroup = new System.Windows.Forms.GroupBox();
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.settingsGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +55,7 @@
             // 
             this.secondTimer.Enabled = true;
             this.secondTimer.Interval = 1000;
-            this.secondTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            this.secondTimer.Tick += new System.EventHandler(this.secondTimer_Tick);
             // 
             // settingsButton
             // 
@@ -244,13 +242,6 @@
             this.settingsGroup.TabStop = false;
             this.settingsGroup.Text = "Network Adapter";
             // 
-            // notifyIcon
-            // 
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "Bandwidth Monitor";
-            this.notifyIcon.Visible = true;
-            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,7 +266,6 @@
             this.Controls.Add(this.kbInSecond);
             this.Controls.Add(this.settingsButton);
             this.Name = "MainForm";
-            this.ShowInTaskbar = false;
             this.Text = "Bandwidth Monitor";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.settingsGroup.ResumeLayout(false);
@@ -305,7 +295,6 @@
         private System.Windows.Forms.Label adapterName;
         private System.Windows.Forms.ComboBox networkAdaptersList;
         private System.Windows.Forms.GroupBox settingsGroup;
-        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 
