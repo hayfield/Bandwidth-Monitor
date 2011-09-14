@@ -14,6 +14,7 @@ namespace BandwidthMonitor
     {
         private bool initialised = false;
 
+
         public MainForm()
         {
             InitializeComponent();
@@ -77,5 +78,13 @@ namespace BandwidthMonitor
                 updateUI();
             }
         }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("happy times");
+            notifyIcon.Text = "Bob likes\nEating";
+        }
+
+
     }
 }

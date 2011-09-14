@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.secondTimer = new System.Windows.Forms.Timer(this.components);
             this.settingsButton = new System.Windows.Forms.Button();
             this.kbInSecond = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             this.adapterName = new System.Windows.Forms.Label();
             this.networkAdaptersList = new System.Windows.Forms.ComboBox();
             this.settingsGroup = new System.Windows.Forms.GroupBox();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.settingsGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -242,6 +244,13 @@
             this.settingsGroup.TabStop = false;
             this.settingsGroup.Text = "Network Adapter";
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Bandwidth Monitor";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +305,7 @@
         private System.Windows.Forms.Label adapterName;
         private System.Windows.Forms.ComboBox networkAdaptersList;
         private System.Windows.Forms.GroupBox settingsGroup;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 
