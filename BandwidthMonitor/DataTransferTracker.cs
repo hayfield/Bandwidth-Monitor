@@ -79,7 +79,7 @@ namespace BandwidthMonitor
         {
             startInstant = logHandler.getDataInstant(ticksAtStartPoint());
             // try looking slightly after a minute ahead to account for any delays in saving
-            minuteAfterStartInstant = logHandler.getDataInstant(ticksAtStartPoint() + (long)(TimeSpan.TicksPerMinute * 1.02));
+            minuteAfterStartInstant = logHandler.getDataInstant(ticksAtStartPoint() + (long)(TimeSpan.TicksPerMinute * 0.98));
 
             // work out how many bytes change should be made each second so there's no sudden jump when the minute changes
             long inDiff = minuteAfterStartInstant.bytesIn - startInstant.bytesIn;
