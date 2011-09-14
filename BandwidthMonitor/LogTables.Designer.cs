@@ -40,6 +40,7 @@
             this.logTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.logTable.Location = new System.Drawing.Point(0, 3);
             this.logTable.Name = "logTable";
+            this.logTable.RowHeadersVisible = false;
             this.logTable.Size = new System.Drawing.Size(376, 150);
             this.logTable.TabIndex = 0;
             // 
