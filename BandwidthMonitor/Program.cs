@@ -73,6 +73,7 @@ namespace BandwidthMonitor
             {
                 adapter.ForceLog();
             }
+            icon.Dispose();
         }
 
         private static void OnMenuExitClick(object Sender, EventArgs e)
