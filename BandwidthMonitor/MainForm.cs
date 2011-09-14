@@ -12,6 +12,8 @@ namespace BandwidthMonitor
 {
     public partial class MainForm : Form
     {
+        private bool initialised = false;
+
         public MainForm()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace BandwidthMonitor
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            populateAdaptersList();
             updateUI();
         }
 
@@ -50,15 +53,29 @@ namespace BandwidthMonitor
             gbOutYear.Text = Bytes.ToGigabytes(trackedInterface.Tracker["Year"].getBytesOut()).ToString("#0.00") + " GB out last year";
         }
 
+        private void populateAdaptersList()
+        {
+            networkAdaptersList.DataSource = NetInterfaces.interfaces;
+            networkAdaptersList.DisplayMember = "name";
+            networkAdaptersList.ValueMember = "ID";
+            networkAdaptersList.SelectedIndex = NetInterfaces.InterfaceIndexWithID(Properties.Settings.Default.TrackedAdapter);
+            initialised = true;
+        }
+
         private void settingsButton_Click(object sender, EventArgs e)
         {
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.ShowDialog(this);
         }
 
-        private void mbInHour_Click(object sender, EventArgs e)
+        private void adapterList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (initialised)
+            {
+                Properties.Settings.Default.TrackedAdapter = networkAdaptersList.SelectedValue.ToString();
+                Properties.Settings.Default.Save();
+                updateUI();
+            }
         }
     }
 }

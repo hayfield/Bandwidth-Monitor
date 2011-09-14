@@ -46,6 +46,9 @@
             this.gbOutYear = new System.Windows.Forms.Label();
             this.gbInYear = new System.Windows.Forms.Label();
             this.adapterName = new System.Windows.Forms.Label();
+            this.networkAdaptersList = new System.Windows.Forms.ComboBox();
+            this.settingsGroup = new System.Windows.Forms.GroupBox();
+            this.settingsGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // secondTimer
@@ -56,12 +59,14 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Location = new System.Drawing.Point(200, 205);
+            this.settingsButton.Enabled = false;
+            this.settingsButton.Location = new System.Drawing.Point(200, 170);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(75, 23);
             this.settingsButton.TabIndex = 0;
             this.settingsButton.Text = "Settings";
             this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Visible = false;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // kbInSecond
@@ -93,7 +98,6 @@
             this.mbInMinute.Size = new System.Drawing.Size(87, 13);
             this.mbInMinute.TabIndex = 3;
             this.mbInMinute.Text = "MB in last minute";
-            this.mbInMinute.Click += new System.EventHandler(this.mbInHour_Click);
             // 
             // mbOutMinute
             // 
@@ -215,12 +219,36 @@
             this.adapterName.TabIndex = 15;
             this.adapterName.Text = "Adapter";
             // 
+            // networkAdaptersList
+            // 
+            this.networkAdaptersList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.networkAdaptersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.networkAdaptersList.FormattingEnabled = true;
+            this.networkAdaptersList.Location = new System.Drawing.Point(3, 16);
+            this.networkAdaptersList.Name = "networkAdaptersList";
+            this.networkAdaptersList.Size = new System.Drawing.Size(281, 21);
+            this.networkAdaptersList.TabIndex = 16;
+            this.networkAdaptersList.SelectedIndexChanged += new System.EventHandler(this.adapterList_SelectedIndexChanged);
+            // 
+            // settingsGroup
+            // 
+            this.settingsGroup.Controls.Add(this.networkAdaptersList);
+            this.settingsGroup.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.settingsGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsGroup.Location = new System.Drawing.Point(0, 204);
+            this.settingsGroup.Name = "settingsGroup";
+            this.settingsGroup.Size = new System.Drawing.Size(287, 53);
+            this.settingsGroup.TabIndex = 17;
+            this.settingsGroup.TabStop = false;
+            this.settingsGroup.Text = "Network Adapter";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(287, 240);
+            this.ClientSize = new System.Drawing.Size(287, 257);
+            this.Controls.Add(this.settingsGroup);
             this.Controls.Add(this.adapterName);
             this.Controls.Add(this.gbOutYear);
             this.Controls.Add(this.gbInYear);
@@ -238,8 +266,10 @@
             this.Controls.Add(this.kbInSecond);
             this.Controls.Add(this.settingsButton);
             this.Name = "MainForm";
+            this.ShowInTaskbar = false;
             this.Text = "Bandwidth Monitor";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.settingsGroup.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,6 +294,8 @@
         private System.Windows.Forms.Label gbOutYear;
         private System.Windows.Forms.Label gbInYear;
         private System.Windows.Forms.Label adapterName;
+        private System.Windows.Forms.ComboBox networkAdaptersList;
+        private System.Windows.Forms.GroupBox settingsGroup;
     }
 }
 
