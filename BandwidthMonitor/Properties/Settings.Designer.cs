@@ -46,5 +46,29 @@ namespace BandwidthMonitor.Properties {
                 this["TrackedAdapterSet"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50000000")]
+        public long InSpikeLimit {
+            get {
+                return ((long)(this["InSpikeLimit"]));
+            }
+            set {
+                this["InSpikeLimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50000000")]
+        public long OutSpikeLimit {
+            get {
+                return ((long)(this["OutSpikeLimit"]));
+            }
+            set {
+                this["OutSpikeLimit"] = value;
+            }
+        }
     }
 }

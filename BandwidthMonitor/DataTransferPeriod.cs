@@ -22,6 +22,13 @@ namespace BandwidthMonitor
             endTicks = newEndTicks;
             bytesIn = newBytesIn;
             bytesOut = newBytesOut;
+
+            // ignore crazy values
+            if (bytesIn < 0 || bytesIn > Properties.Settings.Default.InSpikeLimit)
+                bytesIn = 0;
+            if (bytesOut < 0 || bytesIn > Properties.Settings.Default.OutSpikeLimit)
+                bytesOut = 0;
+
         }
 
         public long getStartTicks()
