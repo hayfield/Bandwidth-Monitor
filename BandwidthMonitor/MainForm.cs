@@ -19,6 +19,7 @@ namespace BandwidthMonitor
         {
             InitializeComponent();
             this.Visible = true;
+            this.Icon = Properties.Resources.ProgramIcon;
         }
 
         //NetInterfaces interfaces = new NetInterfaces();
