@@ -15,5 +15,10 @@ namespace BandwidthMonitor
         {
             InitializeComponent();
         }
+
+        private void LogForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.logsFormActive = false;
+        }
     }
 }

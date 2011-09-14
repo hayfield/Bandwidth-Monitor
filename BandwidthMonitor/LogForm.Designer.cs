@@ -47,6 +47,7 @@
             this.Controls.Add(this.logTables);
             this.Name = "LogForm";
             this.Text = "Bandwidth Logs";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LogForm_FormClosed);
             this.ResumeLayout(false);
 
         }

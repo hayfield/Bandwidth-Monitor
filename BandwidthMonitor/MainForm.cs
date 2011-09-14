@@ -14,7 +14,6 @@ namespace BandwidthMonitor
     {
         private bool initialised = false;
 
-
         public MainForm()
         {
             InitializeComponent();

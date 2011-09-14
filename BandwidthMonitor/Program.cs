@@ -29,6 +29,10 @@ namespace BandwidthMonitor
         /// Indicates whether there is currently a main form open
         /// </summary>
         public static bool mainFormActive = false;
+        /// <summary>
+        /// Indicates whether there is currently a logs form open
+        /// </summary>
+        public static bool logsFormActive = false;
 
         /// <summary>
         /// The main entry point for the application.
@@ -45,6 +49,8 @@ namespace BandwidthMonitor
             timer.Enabled = true;
 
             iconMenu = new ContextMenu();
+            iconMenu.MenuItems.Add(new MenuItem("Current Status", icon_Click));
+            iconMenu.MenuItems.Add(new MenuItem("Logs (daily totals)", OnMenuLogsClick));
             iconMenu.MenuItems.Add(new MenuItem("Exit (stop logging)", OnMenuExitClick));
 
             icon = new NotifyIcon();
@@ -54,7 +60,7 @@ namespace BandwidthMonitor
             icon.DoubleClick += new EventHandler(icon_Click);
             icon.ContextMenu = iconMenu;
 
-            Application.Run(new LogForm());
+            Application.Run();
         }
 
         private static void OnTimedEvent(object source, ElapsedEventArgs e)
@@ -88,6 +94,16 @@ namespace BandwidthMonitor
         private static void OnMenuExitClick(object Sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private static void OnMenuLogsClick(object Sender, EventArgs e)
+        {
+            if (!logsFormActive)
+            {
+                LogForm form = new LogForm();
+                form.Show();
+                logsFormActive = true;
+            }
         }
     }
 }
