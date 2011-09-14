@@ -28,7 +28,7 @@ namespace BandwidthMonitor
         /// <summary>
         /// The data transfer between a timer event being fired twice, causing it to update
         /// </summary>
-        DataTransferPeriod period;
+        public DataTransferPeriod period;
         List<DataTransferPeriod> infos = new List<DataTransferPeriod>();
         List<DataTransferPeriod> minInfos = new List<DataTransferPeriod>();
 
@@ -59,8 +59,9 @@ namespace BandwidthMonitor
         /// </summary>
         String logPath;
 
-        DataTransferTracker minTrack;
-
+        /// <summary>
+        /// The name of the interface
+        /// </summary>
         public String name
         {
             get
@@ -71,7 +72,18 @@ namespace BandwidthMonitor
                     return adapter.Description;
             }
         }
+        /// <summary>
+        /// The ID of the interface
+        /// </summary>
         public String ID { get { return adapter.Id; } }
+
+        /// <summary>
+        /// Contains various trackers for the adapter
+        /// </summary>
+        Dictionary<String, DataTransferTracker> Tracker = new Dictionary<string,DataTransferTracker>();
+
+        DataTransferTracker MinuteTracker;
+        DataTransferTracker HourTracker;
 
         #endregion variables
 
@@ -93,7 +105,8 @@ namespace BandwidthMonitor
             properties = adapter.GetIPProperties();
             Console.WriteLine(adapter.Name + " " + adapter.Description + " " + adapter.OperationalStatus);
 
-            minTrack = new DataTransferTracker(1, logHandler);
+            MinuteTracker = new DataTransferTracker(1, logHandler);
+            HourTracker = new DataTransferTracker(60, logHandler);
 
             readFile();
         }
@@ -134,7 +147,7 @@ namespace BandwidthMonitor
             period = new DataTransferPeriod(dataTransferStart, updateDataTransferStart(), bytesIn(), bytesOut());
             infos.Add(period);
             updateDataInstant();
-            minTrack.updateSecond(period, logHandler);
+            MinuteTracker.updateSecond(period, logHandler);
             if (infos.Count == 60)
             {
                 long startTime = infos[0].getStartTicks();
@@ -185,7 +198,7 @@ namespace BandwidthMonitor
         public void OutputValues()
         {
             Console.WriteLine(adapter.Description);
-            minTrack.print();
+            MinuteTracker.print();
         }
     }
 }

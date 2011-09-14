@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.settingsButton = new System.Windows.Forms.Button();
+            this.kbInLabel = new System.Windows.Forms.Label();
+            this.kbOutLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer1
@@ -41,7 +43,7 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Location = new System.Drawing.Point(197, 227);
+            this.settingsButton.Location = new System.Drawing.Point(173, 225);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(75, 23);
             this.settingsButton.TabIndex = 0;
@@ -49,16 +51,40 @@
             this.settingsButton.UseVisualStyleBackColor = true;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
+            // kbInLabel
+            // 
+            this.kbInLabel.AutoSize = true;
+            this.kbInLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbInLabel.Location = new System.Drawing.Point(12, 9);
+            this.kbInLabel.Name = "kbInLabel";
+            this.kbInLabel.Size = new System.Drawing.Size(81, 17);
+            this.kbInLabel.TabIndex = 1;
+            this.kbInLabel.Text = " KB/sec in";
+            // 
+            // kbOutLabel
+            // 
+            this.kbOutLabel.AutoSize = true;
+            this.kbOutLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbOutLabel.Location = new System.Drawing.Point(12, 26);
+            this.kbOutLabel.Name = "kbOutLabel";
+            this.kbOutLabel.Size = new System.Drawing.Size(91, 17);
+            this.kbOutLabel.TabIndex = 2;
+            this.kbOutLabel.Text = " KB/sec out";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.ClientSize = new System.Drawing.Size(260, 260);
+            this.Controls.Add(this.kbOutLabel);
+            this.Controls.Add(this.kbInLabel);
             this.Controls.Add(this.settingsButton);
             this.Name = "MainForm";
             this.Text = "Bandwidth Monitor";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -66,6 +92,8 @@
 
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Label kbInLabel;
+        private System.Windows.Forms.Label kbOutLabel;
     }
 }
 
