@@ -14,6 +14,7 @@ namespace BandwidthMonitor
         public LogForm()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.ProgramIcon;
         }
 
         private void LogForm_FormClosed(object sender, FormClosedEventArgs e)
