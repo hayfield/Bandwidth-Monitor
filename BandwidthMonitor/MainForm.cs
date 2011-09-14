@@ -20,6 +20,8 @@ namespace BandwidthMonitor
             InitializeComponent();
             this.Visible = true;
             this.Icon = Properties.Resources.ProgramIcon;
+            maxBytesIn.Value = Properties.Settings.Default.InSpikeLimit;
+            maxBytesOut.Value = Properties.Settings.Default.OutSpikeLimit;
         }
 
         //NetInterfaces interfaces = new NetInterfaces();
@@ -83,17 +85,30 @@ namespace BandwidthMonitor
             }
         }
 
-        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("happy times");
-            //notifyIcon.Text = "Bob likes\nEating";
-        }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.mainFormActive = false;
         }
 
+        private void maxBytesIn_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.InSpikeLimit = (long)maxBytesIn.Value;
+        }
+
+        private void maxBytesOut_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.OutSpikeLimit = (long)maxBytesOut.Value;
+        }
+
+        private void maxBytesIn_KeyUp(object sender, KeyEventArgs e)
+        {
+            Properties.Settings.Default.InSpikeLimit = (long)maxBytesIn.Value;
+        }
+
+        private void maxBytesOut_KeyUp(object sender, KeyEventArgs e)
+        {
+            Properties.Settings.Default.OutSpikeLimit = (long)maxBytesOut.Value;
+        }
 
     }
 }

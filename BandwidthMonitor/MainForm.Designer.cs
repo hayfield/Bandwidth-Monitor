@@ -48,7 +48,13 @@
             this.adapterName = new System.Windows.Forms.Label();
             this.networkAdaptersList = new System.Windows.Forms.ComboBox();
             this.settingsGroup = new System.Windows.Forms.GroupBox();
+            this.maxBytesOut = new System.Windows.Forms.NumericUpDown();
+            this.maxBytesIn = new System.Windows.Forms.NumericUpDown();
+            this.maxBytesOutLabel = new System.Windows.Forms.Label();
+            this.maxBytesInLabel = new System.Windows.Forms.Label();
             this.settingsGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxBytesOut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxBytesIn)).BeginInit();
             this.SuspendLayout();
             // 
             // secondTimer
@@ -232,22 +238,74 @@
             // 
             // settingsGroup
             // 
+            this.settingsGroup.Controls.Add(this.maxBytesOut);
+            this.settingsGroup.Controls.Add(this.maxBytesIn);
+            this.settingsGroup.Controls.Add(this.maxBytesOutLabel);
+            this.settingsGroup.Controls.Add(this.maxBytesInLabel);
             this.settingsGroup.Controls.Add(this.networkAdaptersList);
             this.settingsGroup.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.settingsGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsGroup.Location = new System.Drawing.Point(0, 204);
+            this.settingsGroup.Location = new System.Drawing.Point(0, 199);
             this.settingsGroup.Name = "settingsGroup";
-            this.settingsGroup.Size = new System.Drawing.Size(287, 53);
+            this.settingsGroup.Size = new System.Drawing.Size(287, 92);
             this.settingsGroup.TabIndex = 17;
             this.settingsGroup.TabStop = false;
-            this.settingsGroup.Text = "Network Adapter";
+            this.settingsGroup.Text = "Settings";
+            // 
+            // maxBytesOut
+            // 
+            this.maxBytesOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxBytesOut.Location = new System.Drawing.Point(155, 60);
+            this.maxBytesOut.Maximum = new decimal(new int[] {
+            -402653185,
+            -1613725636,
+            54210108,
+            0});
+            this.maxBytesOut.Name = "maxBytesOut";
+            this.maxBytesOut.Size = new System.Drawing.Size(120, 20);
+            this.maxBytesOut.TabIndex = 20;
+            this.maxBytesOut.ValueChanged += new System.EventHandler(this.maxBytesOut_ValueChanged);
+            this.maxBytesOut.KeyUp += new System.Windows.Forms.KeyEventHandler(this.maxBytesOut_KeyUp);
+            // 
+            // maxBytesIn
+            // 
+            this.maxBytesIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxBytesIn.Location = new System.Drawing.Point(15, 60);
+            this.maxBytesIn.Maximum = new decimal(new int[] {
+            -402653185,
+            -1613725636,
+            54210108,
+            0});
+            this.maxBytesIn.Name = "maxBytesIn";
+            this.maxBytesIn.Size = new System.Drawing.Size(120, 20);
+            this.maxBytesIn.TabIndex = 19;
+            this.maxBytesIn.ValueChanged += new System.EventHandler(this.maxBytesIn_ValueChanged);
+            this.maxBytesIn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.maxBytesIn_KeyUp);
+            // 
+            // maxBytesOutLabel
+            // 
+            this.maxBytesOutLabel.AutoSize = true;
+            this.maxBytesOutLabel.Location = new System.Drawing.Point(152, 44);
+            this.maxBytesOutLabel.Name = "maxBytesOutLabel";
+            this.maxBytesOutLabel.Size = new System.Drawing.Size(95, 13);
+            this.maxBytesOutLabel.TabIndex = 18;
+            this.maxBytesOutLabel.Text = "Max bytes out/sec";
+            // 
+            // maxBytesInLabel
+            // 
+            this.maxBytesInLabel.AutoSize = true;
+            this.maxBytesInLabel.Location = new System.Drawing.Point(12, 44);
+            this.maxBytesInLabel.Name = "maxBytesInLabel";
+            this.maxBytesInLabel.Size = new System.Drawing.Size(88, 13);
+            this.maxBytesInLabel.TabIndex = 17;
+            this.maxBytesInLabel.Text = "Max bytes in/sec";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(287, 257);
+            this.ClientSize = new System.Drawing.Size(287, 291);
             this.Controls.Add(this.settingsGroup);
             this.Controls.Add(this.adapterName);
             this.Controls.Add(this.gbOutYear);
@@ -270,6 +328,9 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.settingsGroup.ResumeLayout(false);
+            this.settingsGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxBytesOut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxBytesIn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,6 +357,10 @@
         private System.Windows.Forms.Label adapterName;
         private System.Windows.Forms.ComboBox networkAdaptersList;
         private System.Windows.Forms.GroupBox settingsGroup;
+        private System.Windows.Forms.Label maxBytesOutLabel;
+        private System.Windows.Forms.Label maxBytesInLabel;
+        private System.Windows.Forms.NumericUpDown maxBytesOut;
+        private System.Windows.Forms.NumericUpDown maxBytesIn;
     }
 }
 
