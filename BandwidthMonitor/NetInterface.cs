@@ -102,11 +102,9 @@ namespace BandwidthMonitor
             bytesInSession = stats.BytesReceived;
             bytesOutSession = stats.BytesSent;
             properties = adapter.GetIPProperties();
-            Console.WriteLine(adapter.Name + " " + adapter.Description + " " + adapter.OperationalStatus);
+            //Console.WriteLine(adapter.Name + " " + adapter.Description + " " + adapter.OperationalStatus);
 
             Tracker = new Tracker(logHandler);
-
-            readFile();
         }
 
         private long bytesIn()
@@ -169,15 +167,6 @@ namespace BandwidthMonitor
             {
                 secondCount++;
             }
-        }
-
-        private void readFile()
-        {
-            Console.WriteLine(adapter.Id + " " + adapter.GetPhysicalAddress());
-            Console.WriteLine(logPath);
-            // http://stackoverflow.com/questions/2955402/how-do-i-create-directory-if-doesnt-exist-to-create-file
-            //(new FileInfo(logPath)).Directory.Create();
-            // File.WriteAllText(logPath, "green pie");
         }
 
         public override String ToString()

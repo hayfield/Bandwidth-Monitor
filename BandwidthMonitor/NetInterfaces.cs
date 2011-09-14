@@ -73,7 +73,7 @@ namespace BandwidthMonitor
                 adapter.update();
                 if (adapter.ID == Properties.Settings.Default.TrackedAdapter)
                 {
-                    adapter.OutputValues();
+                    // adapter.OutputValues();
                 }
             }
         }
