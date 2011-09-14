@@ -29,6 +29,10 @@ namespace BandwidthMonitor
         /// The data transfer between a timer event being fired twice, causing it to update
         /// </summary>
         public DataTransferPeriod period;
+        /// <summary>
+        /// The number of seconds since the last time things were logged
+        /// </summary>
+        private byte secondCount = 0;
 
         /// <summary>
         /// The data transfer up to the current point in time
@@ -156,7 +160,15 @@ namespace BandwidthMonitor
 
         private void updateLog(DataTransferInstant data)
         {
-            logHandler.Log(data);
+            if (secondCount == 60)
+            {
+                logHandler.Log(data);
+                secondCount = 0;
+            }
+            else
+            {
+                secondCount++;
+            }
         }
 
         private void readFile()
