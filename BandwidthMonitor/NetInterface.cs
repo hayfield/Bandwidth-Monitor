@@ -29,8 +29,6 @@ namespace BandwidthMonitor
         /// The data transfer between a timer event being fired twice, causing it to update
         /// </summary>
         public DataTransferPeriod period;
-        List<DataTransferPeriod> infos = new List<DataTransferPeriod>();
-        List<DataTransferPeriod> minInfos = new List<DataTransferPeriod>();
 
         /// <summary>
         /// The data transfer up to the current point in time
@@ -141,24 +139,8 @@ namespace BandwidthMonitor
         public void update()
         {
             period = new DataTransferPeriod(dataTransferStart, updateDataTransferStart(), bytesIn(), bytesOut());
-            infos.Add(period);
             updateDataInstant();
             Tracker.Update(period, logHandler);
-            if (infos.Count == 60)
-            {
-                long startTime = infos[0].getStartTicks();
-                long endTime = infos[59].getEndTicks();
-                long inBytes = 0;
-                long outBytes = 0;
-                foreach (DataTransferPeriod secInfo in infos)
-                {
-                    inBytes += secInfo.getBytesIn();
-                    outBytes += secInfo.getBytesOut();
-                }
-                DataTransferPeriod minInfo = new DataTransferPeriod(startTime, endTime, inBytes, outBytes);
-                minInfos.Add(minInfo);
-                infos.Clear();
-            }
         }
 
         private void updateDataInstant()
