@@ -36,12 +36,13 @@
             // 
             this.logTable.AllowUserToAddRows = false;
             this.logTable.AllowUserToDeleteRows = false;
-            this.logTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.logTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.logTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.logTable.Location = new System.Drawing.Point(0, 3);
+            this.logTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logTable.Location = new System.Drawing.Point(0, 0);
             this.logTable.Name = "logTable";
             this.logTable.RowHeadersVisible = false;
-            this.logTable.Size = new System.Drawing.Size(376, 150);
+            this.logTable.Size = new System.Drawing.Size(376, 467);
             this.logTable.TabIndex = 0;
             // 
             // LogTables

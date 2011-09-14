@@ -46,7 +46,7 @@
             this.ClientSize = new System.Drawing.Size(348, 372);
             this.Controls.Add(this.logTables);
             this.Name = "LogForm";
-            this.Text = "LogForm";
+            this.Text = "Bandwidth Logs";
             this.ResumeLayout(false);
 
         }
