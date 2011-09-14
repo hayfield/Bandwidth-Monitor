@@ -52,6 +52,8 @@ namespace BandwidthMonitor
             gbOutMonth.Text = Bytes.ToGigabytes(trackedInterface.Tracker["Month"].getBytesOut()).ToString("#0.00") + " GB out last month";
             gbInYear.Text = Bytes.ToGigabytes(trackedInterface.Tracker["Year"].getBytesIn()).ToString("#0.00") + " GB in last year";
             gbOutYear.Text = Bytes.ToGigabytes(trackedInterface.Tracker["Year"].getBytesOut()).ToString("#0.00") + " GB out last year";
+
+            notifyIcon.Text = kbInSecond.Text + "\n" + kbOutSecond.Text;
         }
 
         private void populateAdaptersList()
@@ -82,7 +84,7 @@ namespace BandwidthMonitor
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             Console.WriteLine("happy times");
-            notifyIcon.Text = "Bob likes\nEating";
+            //notifyIcon.Text = "Bob likes\nEating";
         }
 
 
