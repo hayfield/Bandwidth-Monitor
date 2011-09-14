@@ -82,9 +82,6 @@ namespace BandwidthMonitor
         /// </summary>
         public Tracker Tracker;
 
-        DataTransferTracker MinuteTracker;
-        DataTransferTracker HourTracker;
-
         #endregion variables
 
         public NetInterface(NetworkInterface adapterIn)
@@ -105,8 +102,6 @@ namespace BandwidthMonitor
             properties = adapter.GetIPProperties();
             Console.WriteLine(adapter.Name + " " + adapter.Description + " " + adapter.OperationalStatus);
 
-            //MinuteTracker = new DataTransferTracker(1, logHandler);
-            //HourTracker = new DataTransferTracker(60, logHandler);
             Tracker = new Tracker(logHandler);
 
             readFile();
@@ -149,7 +144,6 @@ namespace BandwidthMonitor
             infos.Add(period);
             updateDataInstant();
             Tracker.Update(period, logHandler);
-            //MinuteTracker.updateSecond(period, logHandler);
             if (infos.Count == 60)
             {
                 long startTime = infos[0].getStartTicks();
