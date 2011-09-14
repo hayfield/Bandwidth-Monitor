@@ -43,7 +43,7 @@ namespace BandwidthMonitor
             iconMenu.MenuItems.Add(new MenuItem("Exit (stop logging)", OnMenuExitClick));
 
             icon = new NotifyIcon();
-            icon.Icon = new Icon(new MainForm().Icon, 16, 16);
+            icon.Icon = new Icon(Properties.Resources.ProgramIcon, 16, 16);
             icon.Text = "Bandwidth Monitor";
             icon.Visible = true;
             icon.DoubleClick += new EventHandler(icon_Click);
