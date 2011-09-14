@@ -24,7 +24,14 @@ namespace BandwidthMonitor
             interfaces = interfaces.OrderBy(adapter => adapter.name).ToList();
             if (!Properties.Settings.Default.TrackedAdapterSet)
             {
-                Properties.Settings.Default.TrackedAdapter = interfaces[0].ID;
+                if (Properties.Settings.Default.TrackedAdapter.Length > 0)
+                {
+                    Properties.Settings.Default.TrackedAdapterSet = true;
+                }
+                else
+                {
+                    Properties.Settings.Default.TrackedAdapter = interfaces[0].ID;
+                }
             }
         }
 
