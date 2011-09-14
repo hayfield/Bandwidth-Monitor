@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.secondTimer = new System.Windows.Forms.Timer(this.components);
             this.settingsButton = new System.Windows.Forms.Button();
             this.kbInSecond = new System.Windows.Forms.Label();
@@ -265,6 +266,7 @@
             this.Controls.Add(this.kbOutSecond);
             this.Controls.Add(this.kbInSecond);
             this.Controls.Add(this.settingsButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Bandwidth Monitor";
             this.Load += new System.EventHandler(this.MainForm_Load);
