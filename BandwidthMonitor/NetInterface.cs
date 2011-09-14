@@ -15,15 +15,15 @@ namespace BandwidthMonitor
         /// <summary>
         /// The network adapter to watch
         /// </summary>
-        NetworkInterface adapter;
+        private NetworkInterface adapter;
         /// <summary>
         /// The network adapter properties
         /// </summary>
-        IPInterfaceProperties properties;
+        private IPInterfaceProperties properties;
         /// <summary>
         /// The network adapter stats
         /// </summary>
-        IPv4InterfaceStatistics stats;
+        private IPv4InterfaceStatistics stats;
 
         /// <summary>
         /// The data transfer between a timer event being fired twice, causing it to update
@@ -41,7 +41,7 @@ namespace BandwidthMonitor
         /// <summary>
         /// Something to handle logging
         /// </summary>
-        LogHandler logHandler;
+        private LogHandler logHandler;
 
         /// <summary>
         /// The time the data transfer period started
@@ -59,7 +59,7 @@ namespace BandwidthMonitor
         /// <summary>
         /// The directory path to the location to store log files for this adapter
         /// </summary>
-        String logPath;
+        private String logPath;
 
         /// <summary>
         /// The name of the interface
@@ -154,6 +154,12 @@ namespace BandwidthMonitor
         private void loadDataInstant(long time)
         {
             dataInstant = logHandler.getDataInstant(time);
+        }
+
+        public void ForceLog()
+        {
+            logHandler.Log(dataInstant);
+            Console.WriteLine("force " + adapter.Description);
         }
 
         private void updateLog(DataTransferInstant data)

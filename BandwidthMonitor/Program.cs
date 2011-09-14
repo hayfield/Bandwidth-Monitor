@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Timers;
 using System.IO;
+using System.Threading;
 
 namespace BandwidthMonitor
 {
@@ -19,6 +20,10 @@ namespace BandwidthMonitor
         /// The system tray icon
         /// </summary>
         private static NotifyIcon icon;
+        /// <summary>
+        /// The context menu for the system tray icon
+        /// </summary>
+        private static ContextMenu iconMenu;
 
         /// <summary>
         /// The main entry point for the application.
@@ -28,16 +33,21 @@ namespace BandwidthMonitor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnApplicationExit);
 
             timer = new System.Timers.Timer(1000);
             timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             timer.Enabled = true;
 
+            iconMenu = new ContextMenu();
+            iconMenu.MenuItems.Add(new MenuItem("Exit (stop logging)", OnMenuExitClick));
+
             icon = new NotifyIcon();
             icon.Icon = new Icon(SystemIcons.Exclamation, 16, 16);
             icon.Text = "Bandwidth Monitor";
             icon.Visible = true;
-            icon.Click += new EventHandler(icon_Click);
+            icon.DoubleClick += new EventHandler(icon_Click);
+            icon.ContextMenu = iconMenu;
 
             Application.Run();
         }
@@ -52,7 +62,22 @@ namespace BandwidthMonitor
 
         private static void icon_Click(object Sender, EventArgs e)
         {
-            Application.Run(new MainForm());
+            MainForm form = new MainForm();
+            form.Show();
+        }
+
+        private static void OnApplicationExit(object Sender, EventArgs e)
+        {
+            Console.WriteLine("exiting");
+            foreach (NetInterface adapter in NetInterfaces.interfaces)
+            {
+                adapter.ForceLog();
+            }
+        }
+
+        private static void OnMenuExitClick(object Sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
