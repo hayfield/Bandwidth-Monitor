@@ -105,5 +105,13 @@ namespace BandwidthMonitor
                 logsFormActive = true;
             }
         }
+
+        public static void populateAdaptersList(ComboBox networkAdaptersList)
+        {
+            networkAdaptersList.DataSource = NetInterfaces.interfaces;
+            networkAdaptersList.DisplayMember = "name";
+            networkAdaptersList.ValueMember = "ID";
+            networkAdaptersList.SelectedIndex = NetInterfaces.InterfaceIndexWithID(Properties.Settings.Default.TrackedAdapter);
+        }
     }
 }
