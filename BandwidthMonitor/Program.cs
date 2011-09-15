@@ -96,7 +96,7 @@ namespace BandwidthMonitor
             Application.Exit();
         }
 
-        private static void OnMenuLogsClick(object Sender, EventArgs e)
+        public static void OnMenuLogsClick(object Sender, EventArgs e)
         {
             if (!logsFormActive)
             {

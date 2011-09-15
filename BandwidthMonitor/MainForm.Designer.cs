@@ -52,6 +52,7 @@
             this.maxBytesIn = new System.Windows.Forms.NumericUpDown();
             this.maxBytesOutLabel = new System.Windows.Forms.Label();
             this.maxBytesInLabel = new System.Windows.Forms.Label();
+            this.logsButton = new System.Windows.Forms.Button();
             this.settingsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxBytesOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxBytesIn)).BeginInit();
@@ -66,7 +67,7 @@
             // settingsButton
             // 
             this.settingsButton.Enabled = false;
-            this.settingsButton.Location = new System.Drawing.Point(200, 170);
+            this.settingsButton.Location = new System.Drawing.Point(211, 141);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(75, 23);
             this.settingsButton.TabIndex = 0;
@@ -300,12 +301,23 @@
             this.maxBytesInLabel.TabIndex = 17;
             this.maxBytesInLabel.Text = "Max bytes in/sec";
             // 
+            // logsButton
+            // 
+            this.logsButton.Location = new System.Drawing.Point(200, 170);
+            this.logsButton.Name = "logsButton";
+            this.logsButton.Size = new System.Drawing.Size(75, 23);
+            this.logsButton.TabIndex = 18;
+            this.logsButton.Text = "Logs";
+            this.logsButton.UseVisualStyleBackColor = true;
+            this.logsButton.Click += new System.EventHandler(this.logsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(287, 291);
+            this.Controls.Add(this.logsButton);
             this.Controls.Add(this.settingsGroup);
             this.Controls.Add(this.adapterName);
             this.Controls.Add(this.gbOutYear);
@@ -361,6 +373,7 @@
         private System.Windows.Forms.Label maxBytesInLabel;
         private System.Windows.Forms.NumericUpDown maxBytesOut;
         private System.Windows.Forms.NumericUpDown maxBytesIn;
+        private System.Windows.Forms.Button logsButton;
     }
 }
 

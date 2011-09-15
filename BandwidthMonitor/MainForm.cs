@@ -109,5 +109,10 @@ namespace BandwidthMonitor
             Properties.Settings.Default.OutSpikeLimit = (long)maxBytesOut.Value;
         }
 
+        private void logsButton_Click(object sender, EventArgs e)
+        {
+            Program.OnMenuLogsClick(sender, e);
+        }
+
     }
 }
