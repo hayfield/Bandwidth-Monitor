@@ -52,7 +52,7 @@ namespace BandwidthMonitor
             }
 
             table.DefaultView.Sort = "Date DESC";
-            
+
             BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = table;
             logTable.DataSource = bindingSource;

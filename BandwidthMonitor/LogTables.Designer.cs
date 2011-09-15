@@ -44,16 +44,17 @@
             this.logTable.Location = new System.Drawing.Point(0, 0);
             this.logTable.Name = "logTable";
             this.logTable.RowHeadersVisible = false;
-            this.logTable.Size = new System.Drawing.Size(376, 467);
+            this.logTable.Size = new System.Drawing.Size(376, 419);
             this.logTable.TabIndex = 0;
             // 
             // LogTables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.Controls.Add(this.logTable);
             this.Name = "LogTables";
-            this.Size = new System.Drawing.Size(376, 467);
+            this.Size = new System.Drawing.Size(376, 419);
             this.Load += new System.EventHandler(this.LogTables_Load);
             ((System.ComponentModel.ISupportInitialize)(this.logTable)).EndInit();
             this.ResumeLayout(false);
