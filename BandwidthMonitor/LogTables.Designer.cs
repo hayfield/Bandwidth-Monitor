@@ -36,6 +36,7 @@
             // 
             this.logTable.AllowUserToAddRows = false;
             this.logTable.AllowUserToDeleteRows = false;
+            this.logTable.AllowUserToOrderColumns = true;
             this.logTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.logTable.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.logTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
