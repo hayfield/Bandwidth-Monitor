@@ -50,6 +50,8 @@ namespace BandwidthMonitor
                 row["Data Out"] = Bytes.ToMegabytes(period.getBytesOut()).ToString("#0.00") + "MB";
                 table.Rows.Add(row);
             }
+
+            table.DefaultView.Sort = "Date DESC";
             
             BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = table;
