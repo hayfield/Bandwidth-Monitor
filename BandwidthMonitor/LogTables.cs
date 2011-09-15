@@ -47,7 +47,7 @@ namespace BandwidthMonitor
                 row = table.NewRow();
                 row["Date"] = DateTime.FromBinary(period.getStartTicks()).ToShortDateString();
                 row["Data In"] = Bytes.ToMegabytes(period.getBytesIn()).ToString("#0.00") + " MB";
-                row["Data Out"] = Bytes.ToMegabytes(period.getBytesOut()).ToString("#0.00") + "MB";
+                row["Data Out"] = Bytes.ToMegabytes(period.getBytesOut()).ToString("#0.00") + " MB";
                 table.Rows.Add(row);
             }
 
