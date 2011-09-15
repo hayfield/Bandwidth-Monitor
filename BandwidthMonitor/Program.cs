@@ -59,7 +59,7 @@ namespace BandwidthMonitor
             icon.Visible = true;
             icon.DoubleClick += new EventHandler(icon_Click);
             icon.ContextMenu = iconMenu;
-
+            
             Application.Run();
         }
 

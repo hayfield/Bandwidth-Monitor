@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
+using System.IO;
 
 namespace BandwidthMonitor
 {
@@ -108,6 +110,17 @@ namespace BandwidthMonitor
             seconds[second].set(period.getBytesIn(), period.getBytesOut());
             bytesIn += seconds[second].bytesIn;
             bytesOut += seconds[second].bytesOut;
+
+            // restarting seems to fix any odd numbers that are being shown
+            if (bytesIn < 0 || bytesOut < 0)
+            {
+                String text = "Restarted from DTT at: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + Environment.NewLine +
+                                    " Bytes: In: " + bytesIn + " Out: " + bytesOut + Environment.NewLine +
+                                    " PS: In: " + bytesStartPerSecond.bytesIn + " Out: " + bytesStartPerSecond.bytesOut + Environment.NewLine +
+                                    " Leftover: In: " + bytesStartLeftover.bytesIn + " Out: " + bytesStartLeftover.bytesOut + Environment.NewLine;
+                File.AppendAllText(Path.Combine("restart-log.txt"), text + Environment.NewLine);
+                Application.Restart();
+            }
 
             second++;
         }
