@@ -119,7 +119,13 @@ namespace BandwidthMonitor
                                     " PS: In: " + bytesStartPerSecond.bytesIn + " Out: " + bytesStartPerSecond.bytesOut + Environment.NewLine +
                                     " Leftover: In: " + bytesStartLeftover.bytesIn + " Out: " + bytesStartLeftover.bytesOut + Environment.NewLine;
                 File.AppendAllText(Path.Combine("restart-log.txt"), text + Environment.NewLine);
-                Application.Restart();
+                bytesIn = 0;
+                bytesOut = 0;
+                Program.restarting = true;
+                if (!Program.restarting)
+                {
+                    Application.Restart();
+                }
             }
 
             second++;

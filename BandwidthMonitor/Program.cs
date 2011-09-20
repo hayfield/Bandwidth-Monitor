@@ -33,6 +33,10 @@ namespace BandwidthMonitor
         /// Indicates whether there is currently a logs form open
         /// </summary>
         public static bool logsFormActive = false;
+        /// <summary>
+        /// Indicates whether the program is attempting to restart
+        /// </summary>
+        public static bool restarting = false;
 
         /// <summary>
         /// The main entry point for the application.
