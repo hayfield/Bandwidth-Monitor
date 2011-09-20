@@ -116,7 +116,7 @@ namespace BandwidthMonitor
             {
                 String text = "Restarted from DTT at: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + Environment.NewLine +
                                     " Bytes: In: " + bytesIn + " Out: " + bytesOut + Environment.NewLine +
-                                    " PS: In: " + bytesStartPerSecond.bytesIn + " Out: " + bytesStartPerSecond.bytesOut + Environment.NewLine +
+                                    " Per Second: In: " + bytesStartPerSecond.bytesIn + " Out: " + bytesStartPerSecond.bytesOut + Environment.NewLine +
                                     " Leftover: In: " + bytesStartLeftover.bytesIn + " Out: " + bytesStartLeftover.bytesOut + Environment.NewLine;
                 File.AppendAllText(Path.Combine("restart-log.txt"), text + Environment.NewLine);
                 bytesIn = 0;
