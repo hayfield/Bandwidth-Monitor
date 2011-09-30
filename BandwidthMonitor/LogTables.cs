@@ -24,7 +24,7 @@ namespace BandwidthMonitor
             DataRow row;
 
             column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
+            column.DataType = System.Type.GetType("System.DateTime");
             column.ColumnName = "Date";
             column.ReadOnly = true;
             table.Columns.Add(column);
