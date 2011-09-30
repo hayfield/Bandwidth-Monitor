@@ -41,13 +41,27 @@ namespace BandwidthMonitor
             column.ReadOnly = true;
             table.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "In";
+            column.ReadOnly = true;
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "Out";
+            column.ReadOnly = true;
+            table.Columns.Add(column);
+
             NetInterface trackedInterface = NetInterfaces.TrackedInterface();
             foreach (DataTransferPeriod period in trackedInterface.getDayData())
             {
                 row = table.NewRow();
                 row["Date"] = DateTime.FromBinary(period.getStartTicks()).ToShortDateString();
-                row["Data In"] = Bytes.ToMegabytes(period.getBytesIn()).ToString("#0.00") + " MB";
+                row["Data In"] = Bytes.ToMegabytes(period.getBytesIn()).ToString("#0.00") +" MB";
                 row["Data Out"] = Bytes.ToMegabytes(period.getBytesOut()).ToString("#0.00") + " MB";
+                row["In"] = Convert.ToDouble(Bytes.ToMegabytes(period.getBytesIn()).ToString("#0.000"));
+                row["Out"] = Convert.ToDouble(Bytes.ToMegabytes(period.getBytesOut()).ToString("#0.000"));
                 table.Rows.Add(row);
             }
 
@@ -56,6 +70,9 @@ namespace BandwidthMonitor
             BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = table;
             logTable.DataSource = bindingSource;
+
+            logTable.Columns[3].Width = 20;
+            logTable.Columns[4].Width = 30;
         }
     }
 }
