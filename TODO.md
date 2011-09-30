@@ -11,3 +11,7 @@
 ## Data
 
 * Try and fix whatever is causing the data to be funny such that it restarts and writes something to the restart-log.txt
+
+## Installer
+
+* Create an installer
