@@ -86,6 +86,14 @@ namespace BandwidthMonitor
             // work out how many bytes change should be made each second so there's no sudden jump when the minute changes
             long inDiff = minuteAfterStartInstant.bytesIn - startInstant.bytesIn;
             long outDiff = minuteAfterStartInstant.bytesOut - startInstant.bytesOut;
+            if (inDiff < 0)
+            {
+                inDiff = -inDiff;
+            }
+            if (outDiff < 0)
+            {
+                outDiff = -outDiff;
+            }
             bytesStartPerSecond.bytesIn = inDiff / 60;
             bytesStartPerSecond.bytesOut = outDiff / 60;
 
@@ -110,7 +118,7 @@ namespace BandwidthMonitor
             seconds[second].set(period.getBytesIn(), period.getBytesOut());
             bytesIn += seconds[second].bytesIn;
             bytesOut += seconds[second].bytesOut;
-
+            
             // restarting seems to fix any odd numbers that are being shown
             if (bytesIn < 0 || bytesOut < 0)
             {
