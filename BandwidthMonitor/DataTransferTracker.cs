@@ -122,18 +122,22 @@ namespace BandwidthMonitor
             // restarting seems to fix any odd numbers that are being shown
             if (bytesIn < 0 || bytesOut < 0)
             {
+                /*
                 String text = "Restarted from DTT at: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + Environment.NewLine +
                                     " Bytes: In: " + bytesIn + " Out: " + bytesOut + Environment.NewLine +
                                     " Per Second: In: " + bytesStartPerSecond.bytesIn + " Out: " + bytesStartPerSecond.bytesOut + Environment.NewLine +
                                     " Leftover: In: " + bytesStartLeftover.bytesIn + " Out: " + bytesStartLeftover.bytesOut + Environment.NewLine;
                 File.AppendAllText(Path.Combine("restart-log.txt"), text + Environment.NewLine);
-                bytesIn = 0;
-                bytesOut = 0;
+
                 Program.restarting = true;
                 if (!Program.restarting)
                 {
                     Application.Restart();
                 }
+                */
+
+                bytesIn = 0;
+                bytesOut = 0;
             }
 
             second++;
