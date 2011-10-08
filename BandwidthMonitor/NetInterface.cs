@@ -114,6 +114,11 @@ namespace BandwidthMonitor
             long bytesRecent = bytesIn - bytesInSession;
             bytesInSession = bytesIn;
 
+            if (bytesRecent < 0 || bytesRecent > Properties.Settings.Default.InSpikeLimit)
+            {
+                bytesRecent = 0;
+            }
+
             return bytesRecent;
         }
 
@@ -123,6 +128,11 @@ namespace BandwidthMonitor
             long bytesOut = stats.BytesSent;
             long bytesRecent = bytesOut - bytesOutSession;
             bytesOutSession = bytesOut;
+
+            if (bytesRecent < 0 || bytesRecent > Properties.Settings.Default.OutSpikeLimit)
+            {
+                bytesRecent = 0;
+            }
 
             return bytesRecent;
         }
