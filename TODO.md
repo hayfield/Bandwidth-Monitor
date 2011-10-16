@@ -12,6 +12,7 @@
 
 * Try and fix whatever is causing the data to be funny such that it restarts and writes something to the restart-log.txt
 * Stop the data transfer sometimes displaying as negative
+* The 'last minute' data can seem rather inflated at times
 
 ## Installer
 
