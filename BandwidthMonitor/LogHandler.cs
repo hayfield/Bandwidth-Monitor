@@ -123,17 +123,23 @@ namespace BandwidthMonitor
                 string[] fileNames = Directory.GetFiles(logPath);
                 foreach (string name in fileNames)
                 {
-                    // find the start and end data for that day
-                    string[] lines = File.ReadAllLines(name);
-                    string[] start = lines[0].Split(',');
-                    string[] end = lines[lines.Length - 1].Split(',');
-                    long ticksStart = Convert.ToInt64(start[0]);
-                    long ticksEnd = Convert.ToInt64(end[0]);
+                    try
+                    {
+                        // find the start and end data for that day
+                        string[] lines = File.ReadAllLines(name);
+                        string[] start = lines[0].Split(',');
+                        string[] end = lines[lines.Length - 1].Split(',');
+                        long ticksStart = Convert.ToInt64(start[0]);
+                        long ticksEnd = Convert.ToInt64(end[0]);
 
-                    // work out the difference and store the value
-                    long bytesIn = Convert.ToInt64(end[1]) - Convert.ToInt64(start[1]);
-                    long bytesOut = Convert.ToInt64(end[2]) - Convert.ToInt64(start[2]);
-                    list.Add(new DataTransferPeriod(ticksStart, ticksEnd, bytesIn, bytesOut, true));
+                        // work out the difference and store the value
+                        long bytesIn = Convert.ToInt64(end[1]) - Convert.ToInt64(start[1]);
+                        long bytesOut = Convert.ToInt64(end[2]) - Convert.ToInt64(start[2]);
+                        list.Add(new DataTransferPeriod(ticksStart, ticksEnd, bytesIn, bytesOut, true));
+                    }
+                    catch (Exception e)
+                    {
+                    }
                 }
             }
 
